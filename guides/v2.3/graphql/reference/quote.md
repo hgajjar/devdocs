@@ -21,7 +21,7 @@ The cart object can contain the following attributes:
 
 Attribute |  Data Type | Description
 --- | --- | ---
-`applied_coupon` | code | Contains the coupon code if used 
+`applied_coupon` | String | Contains the coupon code if used 
 `billing_address` | [CartAddress](#cartAddressAttributes) | Contains the billing address specified in the customer's cart
 `cart_id` | String | The unique ID that identifies the customer's cart
 `items` | [CartItemInterface](#cartItemsInterface) | Contains the items in the customer's cart
@@ -142,11 +142,11 @@ Use the `quote` mutations to create a cart, apply or remove a coupon from a cart
 
 The `createEmptyCart` mutation creates an empty shopping cart for a guest or logged in customer. If you are creating a cart for a logged in customer, you must include the customer's authorization token in the header of the request.
 
-**Syntax**
+#### Syntax
 
 `mutation: createEmptyCart`
 
-### Example usage
+#### Example usage
 
 The following call creates a new, empty shopping cart.
 
@@ -348,7 +348,7 @@ mutation {
 
 You can set the billing and shipping addresses on a cart and specify shipping methods.
 
-### SetBillingAddressOnCart attributes
+### Set billing address on cart attributes
 The Set billing address on cart object can contain the following attributes:
 
 Attribute |  Data Type | Description
@@ -356,7 +356,7 @@ Attribute |  Data Type | Description
 `billing_address` | [BillingAddressInput](#billingAddressInput) | The list of items to add to the cart
 `cart_id` | String | The unique ID that identifies the customer's cart
 
-### SetBillingAddressInput attributes {#billingAddressInput}
+### Set billing address input attributes {#billingAddressInput}
 The Set billing address input object can contain the following attributes:
 
 Attribute |  Data Type | Description
@@ -365,7 +365,7 @@ Attribute |  Data Type | Description
 `customer_address_id` | Int | The unique ID that identifies the customer's address
 `use_for_shipping` | Boolean | Specifies whether to use the billing address for the shipping address (`True`/`False`)
 
-### CartAddressInput attributes {#cartAddressInput}
+### Cart address input attributes {#cartAddressInput}
 The Cart address input object can contain the following attributes:
 
 Attribute |  Data Type | Description
