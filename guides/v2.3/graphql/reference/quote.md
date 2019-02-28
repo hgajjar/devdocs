@@ -10,7 +10,6 @@ A quote represents the contents of a customer's shopping cart. It is responsible
 * Calculating subtotals, computing additional costs, applying coupons, and determining the payment method
 
 ## Query
-
 Use the `Cart` query to retrieve information about a particular cart.
 
 ### Syntax
@@ -18,6 +17,7 @@ Use the `Cart` query to retrieve information about a particular cart.
 `cart: Cart`
 
 ### Cart attributes
+The cart object can contain the following attributes:
 
 Attribute |  Data Type | Description
 --- | --- | ---
@@ -28,6 +28,7 @@ Attribute |  Data Type | Description
 `shipping_addresses` | [CartAddress] | Contains one or more shipping addresses
 
 ### Cart address attributes {#cartAddressAttributes}
+The cart address object can contain the following attributes:
 
 Attribute |  Data Type | Description
 --- | --- | ---
@@ -45,7 +46,8 @@ Attribute |  Data Type | Description
 `street` | [String] | The street for the shipping or billing address
 `telephone` | String | The telephone number for the shipping or billing address
 
-### Cart items interface attributes {#cartItemsInterface}
+### Cart item interface attributes {#cartItemsInterface}
+The cart item interface object can contain the following attributes:
 
 Attribute |  Data Type | Description
 --- | --- | ---
@@ -134,7 +136,6 @@ The following returns information about a cart given a `cart_id`. Note that the 
 ```
 
 ## Mutations
-
 Use the `quote` mutations to create a cart, apply or remove a coupon from a cart, add products to a cart, and set shipping and billing information to a cart.
 
 ### Create an empty cart {#createEmptyCart}
@@ -145,7 +146,8 @@ The `createEmptyCart` mutation creates an empty shopping cart for a guest or log
 
 `mutation: createEmptyCart`
 
-**Example usage**
+### Example usage
+
 The following call creates a new, empty shopping cart.
 
 **Request**
@@ -169,10 +171,12 @@ The response is the quote ID, which is sometimes called the cart ID. The remaini
 ```
 
 ### Adding and removing coupons from a cart
+{:.no_toc}
 
 You can use mutations to add or remove coupons from a specified cart.
 
-**Coupon attributes**
+### Coupon attributes
+The coupon object can contain the following attributes:
 
 Attribute |  Data Type | Description
 --- | --- | ---
@@ -183,11 +187,12 @@ Attribute |  Data Type | Description
 
 Adds a coupon code to a cart.
 
-**Syntax**
+#### Syntax
 
 `mutation: applyCouponToCart`
 
-**Example usage**
+#### Example usage
+
 The following call adds a coupon code called `test2019` to a cart.
 
 **Request**
@@ -225,11 +230,11 @@ mutation {
 
 Removes a coupon from the specified cart.
 
-**Syntax**
+#### Syntax
 
 `mutation: removeCouponFromCart`
 
-**Example usage**
+#### Example usage
 
 The following example removes a coupon from the cart.
 
@@ -264,21 +269,23 @@ mutation {
 ```
 
 ### Adding products to cart
+{:.no_toc}
 
 Adds simple items to a specific cart.
 
-### Adding products attributes
+### Add simple products to cart attributes
+The Add simple products to cart object can contain the following attributes:
 
 Attribute |  Data Type | Description
 --- | --- | ---
 `cartItems` | [SimpleProductCartItemInput] | The list of items to add to the cart
 `cart_id` | String | The unique ID that identifies the customer's cart
 
-**Syntax**
+#### Syntax
 
 `mutation: addSimpleProductsToCart`
 
-**Example usage**
+#### Example usage
 
 The following example adds two Joust Duffle Bags to the cart.
 
@@ -337,15 +344,20 @@ mutation {
 ```-->
 
 ### Updating billing and shipping information
+{:.no_toc}
 
 You can set the billing and shipping addresses on a cart and specify shipping methods.
+
+### SetBillingAddressOnCart attributes
+The Set billing address on cart object can contain the following attributes:
 
 Attribute |  Data Type | Description
 --- | --- | ---
 `billing_address` | [BillingAddressInput](#billingAddressInput) | The list of items to add to the cart
 `cart_id` | String | The unique ID that identifies the customer's cart
 
-**SetBillingAddressInput object {#billingAddressInput}**
+### SetBillingAddressInput attributes {#billingAddressInput}
+The Set billing address input object can contain the following attributes:
 
 Attribute |  Data Type | Description
 --- | --- | ---
@@ -353,7 +365,8 @@ Attribute |  Data Type | Description
 `customer_address_id` | Int | The unique ID that identifies the customer's address
 `use_for_shipping` | Boolean | Specifies whether to use the billing address for the shipping address (`True`/`False`)
 
-**CartAddressInput {#cartAddressInput}**
+### CartAddressInput attributes {#cartAddressInput}
+The Cart address input object can contain the following attributes:
 
 Attribute |  Data Type | Description
 --- | --- | ---
@@ -366,18 +379,18 @@ Attribute |  Data Type | Description
 `postcode` | String | The postal code for the billing address
 `region` | String | The region code and label for the billing address
 `save_in_address_book` | Boolean | Specifies whether to save the address (`True`/`False`)
-`street` | [String] | The the street for the billing address
+`street` | [String] | The street for the billing address
 `telephone` | String | The telephone number for the billing address
 
 ### Set billing address on cart
 
 Use the `setBillingAddressOnCart` mutation to set a new billing address for a specific cart.
 
-**Syntax**
+#### Syntax
 
 `mutation: setBillingAddressOnCart`
 
-**Example usage**
+#### Example usage
 
 The following example creates a new billing address for a specific cart.
 
@@ -448,10 +461,11 @@ mutation {
 
 Use the `setShippingAddressesOnCart` mutation to set a new shipping address for a specific cart.
 
-**Syntax**
+#### Syntax
+
 `mutation: setShippingAddressOnCart`
 
-**Example usage**
+#### Example usage
 
 The following example creates a new shipping address for a specific cart.
 
